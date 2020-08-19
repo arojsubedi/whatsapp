@@ -1,0 +1,15 @@
+.appusrarea__content{
+    flex: 0.35;
+}
+
+.appusrarea__heading{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.appusrarea__icons{
+    display: flex;
+    justify-content: space-between;
+    min-width: 10vw;
+}
