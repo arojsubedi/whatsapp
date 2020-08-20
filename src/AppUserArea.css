@@ -1,11 +1,14 @@
 .appusrarea__content{
-    flex: 0.35;
+    flex: 0.30;
+    display: flex;
+    flex-direction: column;
 }
 
 .appusrarea__heading{
     display: flex;
     justify-content: space-between;
     padding: 20px;
+    background-color: #f0f0f0;
 }
 
 .appusrarea__icons{
@@ -13,3 +16,49 @@
     justify-content: space-between;
     min-width: 10vw;
 }
+
+.appusrarea__search{
+    display: flex;
+    justify-content: center;
+    background-color: #f5f5f5;
+}
+
+.appusrarea__searchicons{
+    display: flex;
+    justify-content: normal;
+    margin: 0.5rem;
+    background-color: white;
+    border-radius: 3rem;
+    width: 100%;
+    height: 40px;
+}
+.search__input{
+    border: none;
+    font-size: 14px;;
+}
+input:focus, textarea:focus, select:focus{
+    outline: none;
+}
+
+.appusrarea__chats{
+    overflow: scroll;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
