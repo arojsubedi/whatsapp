@@ -4,13 +4,20 @@ import {Avatar,IconButton} from '@material-ui/core';
 import AttachFileIcon from '@material-ui/icons/AttachFile';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import SearchIcon from '@material-ui/icons/Search';
+import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
+import MicIcon from '@material-ui/icons/Mic';
 
 function UserMsgArea() {
     const [seed,setSeed] = useState('')
+    const [msg,setMsg] = useState('')
 
     useEffect(()=>{
         setSeed(Math.random(1,5000))
     },[]);
+
+     const sendMsg = (e)=>{
+         alert(msg)
+     }
 
     return (
         <div className="usermsgarea">
@@ -40,15 +47,28 @@ function UserMsgArea() {
                         <span className="chatmsg__timestamp">timestamp</span>
                     </p>
                 </div>
-                <div className="usermsgarea__chatmsg">
-                    <span className="chatmsg__username">username</span>
-                    <span className="chatmsg__msgbody">chat msggg</span>
-                    <span className="chatmsg__timestamp">timestamp</span>
+                <div className={`usermsgarea__chatmsg ${true} usrmsgarea__recvrchatmsg`}>
+                    <p>
+                        <span className="chatmsg__username">username</span>
+                        chat msggg
+                        <span className="chatmsg__timestamp">timestamp</span>
+                    </p>
                 </div>
 
             </div>
             <div className="usermsgarea__footer">
-
+                <InsertEmoticonIcon />
+                <form className="enter__msg">
+                    <input
+                        id="enter__msg"
+                        name = "enter__msg"
+                        placeholder="Type a message"
+                        value={msg}
+                        onChange={(e)=>{setMsg(e.target.value)}}
+                    />
+                    <button type="submit" onClick={(e)=>{sendMsg(e)}}>send msg</button>
+                </form>
+                <MicIcon />
             </div>
             
         </div>

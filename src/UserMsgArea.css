@@ -40,6 +40,7 @@
     background-image: url(./static/images/backgroundimage.jpg);
     background-repeat: repeat;
     padding:15px;
+    overflow-y:scroll;
 }
 
 .usermsgarea__chatmsg{
@@ -51,12 +52,49 @@
     margin-bottom: 1.2rem;
 }
 
+.usrmsgarea__recvrchatmsg{
+    background-color: #DCF8C6;
+    margin-left: auto;
+}
+
 .chatmsg__username{
     position: absolute;
     font-size: x-small;
     margin-top: -25px;
+    font-weight: 700;
 }
 .chatmsg__timestamp{
     font-size: xx-small;
     padding-left: 5px;
+    font-weight: 600;
+}
+
+.usermsgarea__footer{
+    border-top: 1px solid lightgrey;
+    display: flex;
+    align-items: center;
+    height: 1.5rem;
+    padding: 15px;
+}
+
+.usermsgarea__footer >.MuiSvgIcon-root{
+    color: gray;
+}
+
+.enter__msg{
+    flex: 1;
+    height: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.enter__msg >input{
+    /* flex: 1; */
+    width: 100%;
+    border: 1px solid lightgrey;
+    border-radius: 15px;
+    height: 1.8rem;
+}
+
+.enter__msg >button{
+    display: none;
 }

@@ -4,6 +4,9 @@
     border-bottom: 1px solid lightgray;
 }
 
+.userChats:hover{
+    background-color: #ededee;
+}
 .userChats__namemsg{
     margin-left: 15px;
 }

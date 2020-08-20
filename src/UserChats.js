@@ -1,9 +1,8 @@
 import React,{useState,useEffect} from 'react';
 import './UserChats.css';
 import {Avatar} from '@material-ui/core';
-function UserChats({addNewChat}) {
+function UserChats({addNewChat,id,name}) {
     const [seed,setSeed]=useState('')
-
     const createNewChat = () =>{
         const userVal = prompt("Search for a user")
     }
@@ -15,7 +14,7 @@ function UserChats({addNewChat}) {
         <div className="userChats">
             <Avatar src={`https://avatars.dicebear.com/api/avataaars/${seed}.svg`} />
             <div className="userChats__namemsg">
-                <h5>Room Name</h5>
+                <h5>{name}</h5>
                 <h6>Last message...</h6>
             </div>
             
