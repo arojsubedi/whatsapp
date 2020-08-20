@@ -1,4 +1,20 @@
 .userChats{
+    display: flex;
     padding: 15px;
     border-bottom: 1px solid lightgray;
+}
+
+.userChats__namemsg{
+    margin-left: 15px;
+}
+
+.userChats__namemsg > h5{
+    font-size: 1.1rem;
+    font-weight: 490;
+    margin-bottom: 0.2rem;
+}
+
+.userChats__namemsg > h6{
+    font-size: 0.9rem;
+    font-weight: 400;
 }

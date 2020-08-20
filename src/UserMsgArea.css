@@ -1,0 +1,62 @@
+.usermsgarea{
+    flex:0.70;
+    display: flex;
+    flex-direction: column;
+}
+
+.usermsgarea__userinfo{
+    display:flex;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 0.1px solid lightgray;
+}
+.usermsgarea__info{
+    flex:1;
+    margin-left:0.8rem;
+    
+}
+
+.usermsgarea__icons{
+    min-width: 100px;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 1rem;
+}
+
+.usermsgarea__info > h5{
+    font-size: 1.1rem;
+    font-weight: 490;
+    margin-bottom: 0.2rem;
+}
+
+.usermsgarea__info > h6{
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: gray;
+}
+
+.usermsgarea__msg{
+    flex: 1;
+    background-image: url(./static/images/backgroundimage.jpg);
+    background-repeat: repeat;
+    padding:15px;
+}
+
+.usermsgarea__chatmsg{
+    position: relative;
+    padding: 10px;
+    background-color: white;
+    width: fit-content;
+    border-radius: 10px;
+    margin-bottom: 1.2rem;
+}
+
+.chatmsg__username{
+    position: absolute;
+    font-size: x-small;
+    margin-top: -25px;
+}
+.chatmsg__timestamp{
+    font-size: xx-small;
+    padding-left: 5px;
+}

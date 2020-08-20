@@ -31,7 +31,7 @@ function AppUserArea() {
                     <input 
                         id="search__option"
                         name="search__option"
-                        placeholder="search or start a new chat"
+                        placeholder="search or start new chat"
                         className="search__input"
                         // value={}
                         // onchange={e}
@@ -40,6 +40,7 @@ function AppUserArea() {
                 
             </div>
             <div className="appusrarea__chats">
+                    <UserChats addNewChat />
                     <UserChats/>
                     <UserChats/>
                     <UserChats/>
