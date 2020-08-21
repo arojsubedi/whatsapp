@@ -12,13 +12,17 @@ function AppUserArea() {
 
     const [rooms,setRooms] = useState([])
 
+    
     useEffect(() => {
-       db.collection('rooms').onSnapshot(snapshot=>{
+       const unsubscribe = db.collection('rooms').onSnapshot(snapshot=>{
            setRooms(snapshot.docs.map(doc=>({
                id:doc.id,
                rooms:doc.data()
            })))
        })
+       return()=>{
+           unsubscribe()
+       }
     }, [])
     return (
         <div className="appusrarea__content">

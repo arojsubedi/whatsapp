@@ -45,7 +45,7 @@
 
 .usermsgarea__chatmsg{
     position: relative;
-    padding: 10px;
+    padding: 6px;
     background-color: white;
     width: fit-content;
     border-radius: 10px;
@@ -60,7 +60,7 @@
 .chatmsg__username{
     position: absolute;
     font-size: x-small;
-    margin-top: -25px;
+    margin-top: -20px;
     font-weight: 700;
 }
 .chatmsg__timestamp{
@@ -74,7 +74,7 @@
     display: flex;
     align-items: center;
     height: 1.5rem;
-    padding: 15px;
+    padding: 1.4rem;
 }
 
 .usermsgarea__footer >.MuiSvgIcon-root{
@@ -97,4 +97,8 @@
 
 .enter__msg >button{
     display: none;
+}
+
+.usermsgarea__chatmsg > p{
+    margin-bottom: 0;
 }

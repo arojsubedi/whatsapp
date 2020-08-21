@@ -6,17 +6,32 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import SearchIcon from '@material-ui/icons/Search';
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
 import MicIcon from '@material-ui/icons/Mic';
+import db from './Firebase.js';
+import { useParams } from 'react-router-dom';
 
 function UserMsgArea() {
     const [seed,setSeed] = useState('')
     const [msg,setMsg] = useState('')
+    const {roomid} = useParams()
+    const [roomName,setRoomName]=useState('')
+
+    useEffect(()=>{
+        console.log('roomId',roomid)
+        if(roomid){
+            db.collection('rooms').doc(roomid).onSnapshot(snapshot=>{
+                setRoomName(snapshot.data().name)
+            })
+        }
+    },[roomid])
 
     useEffect(()=>{
         setSeed(Math.random(1,5000))
     },[]);
 
      const sendMsg = (e)=>{
+         e.preventDefault();
          alert(msg)
+         setMsg("")
      }
 
     return (
@@ -24,7 +39,8 @@ function UserMsgArea() {
             <div className="usermsgarea__userinfo">
                 <Avatar src={`https://avatars.dicebear.com/api/avataaars/${seed}.svg`} />
                 <div className = "usermsgarea__info">
-                    <h5>username</h5>
+                    
+                    <h5>{roomName}</h5>
                     <h6>last seen at</h6>
                 </div>
                 <div className="usermsgarea__icons">
