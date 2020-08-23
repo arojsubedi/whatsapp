@@ -12,17 +12,16 @@ import { useParams } from 'react-router-dom';
 function UserMsgArea() {
     const [seed,setSeed] = useState('')
     const [msg,setMsg] = useState('')
-    const {roomid} = useParams()
+    const {roomId} = useParams()
     const [roomName,setRoomName]=useState('')
-
     useEffect(()=>{
-        console.log('roomId',roomid)
-        if(roomid){
-            db.collection('rooms').doc(roomid).onSnapshot(snapshot=>{
+        
+        if(roomId){
+            db.collection('rooms').doc(roomId).onSnapshot(snapshot=>{
                 setRoomName(snapshot.data().name)
             })
         }
-    },[roomid])
+    },[roomId])
 
     useEffect(()=>{
         setSeed(Math.random(1,5000))

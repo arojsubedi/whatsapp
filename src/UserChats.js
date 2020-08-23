@@ -31,17 +31,15 @@ function UserChats({addNewChat,id,name}) {
       },[]);
 
     return !addNewChat?(
-        <Router>
-            <Link to={`/room/${id}`}>
-                <div className="userChats">
-                    <Avatar src={`https://avatars.dicebear.com/api/avataaars/${seed}.svg`} />
-                    <div className="userChats__namemsg">
-                        <h5>{name}</h5>
-                        <h6>Last message...</h6>
-                    </div>
+        <Link to={`/room/${id}`}>
+            <div className="userChats">
+                <Avatar src={`https://avatars.dicebear.com/api/avataaars/${seed}.svg`} />
+                <div className="userChats__namemsg">
+                    <h5>{name}</h5>
+                    <h6>Last message...</h6>
                 </div>
-            </Link>
-        </Router>
+            </div>
+        </Link>
         
         ):
             (
