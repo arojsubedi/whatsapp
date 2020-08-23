@@ -4,7 +4,7 @@ import {Avatar} from '@material-ui/core';
 import {Modal} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import db from './Firebase';
-import {BrowserRouter as Router,Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 function UserChats({addNewChat,id,name}) {
     const [seed,setSeed]=useState('')
@@ -31,7 +31,7 @@ function UserChats({addNewChat,id,name}) {
       },[]);
 
     return !addNewChat?(
-        <Link to={`/room/${id}`}>
+        <Link to={`/room/${id}/${seed}`}>
             <div className="userChats">
                 <Avatar src={`https://avatars.dicebear.com/api/avataaars/${seed}.svg`} />
                 <div className="userChats__namemsg">

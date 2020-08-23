@@ -10,22 +10,33 @@ import db from './Firebase.js';
 import { useParams } from 'react-router-dom';
 
 function UserMsgArea() {
-    const [seed,setSeed] = useState('')
+    // const [seed,setSeed] = useState('')
     const [msg,setMsg] = useState('')
     const {roomId} = useParams()
+    const {seed} = useParams()
     const [roomName,setRoomName]=useState('')
+    const [messages,setMessage] = useState([])
+    
     useEffect(()=>{
         
         if(roomId){
             db.collection('rooms').doc(roomId).onSnapshot(snapshot=>{
                 setRoomName(snapshot.data().name)
             })
+
+            db.collection('rooms')
+            .doc(roomId)
+            .collection('messages')
+            .orderBy('timestamp','asc')
+            .onSnapshot(snapshot=>{
+                setMessage(snapshot.docs.map(doc=>doc.data()))
+            })
         }
     },[roomId])
 
-    useEffect(()=>{
-        setSeed(Math.random(1,5000))
-    },[]);
+    // useEffect(()=>{
+    //     setSeed(Math.random(1,5000))
+    // },[]);
 
      const sendMsg = (e)=>{
          e.preventDefault();
@@ -36,7 +47,9 @@ function UserMsgArea() {
     return (
         <div className="usermsgarea">
             <div className="usermsgarea__userinfo">
-                <Avatar src={`https://avatars.dicebear.com/api/avataaars/${seed}.svg`} />
+                <IconButton>
+                    <Avatar src={`https://avatars.dicebear.com/api/avataaars/${seed}.svg`} />
+                </IconButton>
                 <div className = "usermsgarea__info">
                     
                     <h5>{roomName}</h5>
@@ -55,21 +68,14 @@ function UserMsgArea() {
                 </div>
             </div>
             <div className="usermsgarea__msg">
-                <div className="usermsgarea__chatmsg">
-                    <p>
-                        <span className="chatmsg__username">username</span>
-                        chat msggg
-                        <span className="chatmsg__timestamp">timestamp</span>
+                {messages.map((message)=>(
+                    <p className={`usermsgarea__chatmsg ${true && "usrmsgarea__recvrchatmsg"}`}>
+                        <span className="chatmsg__username">{message.name}</span>
+                        {message.message}
+                        <span className="chatmsg__timestamp">{new Date(message.timestamp?.toDate()).toUTCString()}</span>
                     </p>
-                </div>
-                <div className={`usermsgarea__chatmsg ${true} usrmsgarea__recvrchatmsg`}>
-                    <p>
-                        <span className="chatmsg__username">username</span>
-                        chat msggg
-                        <span className="chatmsg__timestamp">timestamp</span>
-                    </p>
-                </div>
-
+                ))}
+                
             </div>
             <div className="usermsgarea__footer">
                 <InsertEmoticonIcon />

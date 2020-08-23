@@ -7,10 +7,13 @@ import ChatIcon from '@material-ui/icons/Chat';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import SearchIcon from '@material-ui/icons/Search';
 import db from "./Firebase.js";
+import {useStateValue} from './StateProvider';
+
 
 function AppUserArea() {
 
     const [rooms,setRooms] = useState([])
+    const [{user},dispatch] = useStateValue();
 
     
     useEffect(() => {
@@ -27,7 +30,7 @@ function AppUserArea() {
     return (
         <div className="appusrarea__content">
             <div className="appusrarea__heading">
-                <Avatar>H</Avatar>
+            <Avatar src={user?.photoURL}/>
                 <div className="appusrarea__icons">
                     <IconButton>
                         <DonutLargeIcon color="disabled"/>
