@@ -10,6 +10,7 @@ function UserChats({addNewChat,id,name}) {
     const [seed,setSeed]=useState('')
     const [newChatRoom,setNewChatRoom]=useState('')
     const [showModal, setShowModal] = useState(false);
+    const [msg,setMsg] = useState('')
 
     const createNewChat = (e) =>{
         setShowModal(true)
@@ -26,6 +27,17 @@ function UserChats({addNewChat,id,name}) {
         setNewChatRoom('')
     }
 
+    useEffect(()=>{
+        if(id){
+            db.collection('rooms')
+            .doc(id)
+            .collection('messages')
+            .orderBy('timestamp','desc')
+            .onSnapshot(snapshot=>{
+                setMsg(snapshot.docs.map(doc=>doc.data()))
+            })
+        }
+    },[id])
     useEffect(() => {
         setSeed(Math.random(1,5000))
       },[]);
@@ -36,7 +48,7 @@ function UserChats({addNewChat,id,name}) {
                 <Avatar src={`https://avatars.dicebear.com/api/avataaars/${seed}.svg`} />
                 <div className="userChats__namemsg">
                     <h5>{name}</h5>
-                    <h6>Last message...</h6>
+                    <h6>{msg[0]?.message}</h6>
                 </div>
             </div>
         </Link>

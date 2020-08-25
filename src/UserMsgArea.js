@@ -8,6 +8,8 @@ import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
 import MicIcon from '@material-ui/icons/Mic';
 import db from './Firebase.js';
 import { useParams } from 'react-router-dom';
+import {useStateValue} from './StateProvider';
+import * as firebase from 'firebase/app';
 
 function UserMsgArea() {
     // const [seed,setSeed] = useState('')
@@ -16,6 +18,8 @@ function UserMsgArea() {
     const {seed} = useParams()
     const [roomName,setRoomName]=useState('')
     const [messages,setMessage] = useState([])
+    const [{user},dispatch] = useStateValue();
+    
     
     useEffect(()=>{
         
@@ -40,7 +44,20 @@ function UserMsgArea() {
 
      const sendMsg = (e)=>{
          e.preventDefault();
-         alert(msg)
+         db.collection('rooms')
+            .doc(roomId)
+            .collection('messages')
+            .add({
+                name:user.displayName,
+                message:msg,
+                timestamp:firebase.firestore.FieldValue.serverTimestamp(),
+            })
+            .then(function(docRef) {
+                console.log("Document written with ID: ", docRef.id);
+            })
+            .catch(function(error) {
+                console.error("Error adding document: ", error);
+            });
          setMsg("")
      }
 
@@ -53,7 +70,7 @@ function UserMsgArea() {
                 <div className = "usermsgarea__info">
                     
                     <h5>{roomName}</h5>
-                    <h6>last seen at</h6>
+                    <h6>{messages.length!==0?'Last sent':''} {" "}{(messages.length!==0)?new Date(messages[messages.length-1].timestamp?.toDate()).toUTCString():''}</h6>
                 </div>
                 <div className="usermsgarea__icons">
                     <IconButton>
