@@ -17,6 +17,7 @@
 
 .user__input{
     display: grid;
+    grid-template-rows: 15rem 8rem 0rem 0rem 0rem;
     place-items: center;
     height: 33.5rem;
     /* display:flex; */
@@ -77,8 +78,67 @@
     width: 100%;
 }
 .signup__btn{
-    margin-bottom: 4.9rem;
+    font-size: 1.3rem;
+    font-family: monospace;
+    /* margin-bottom: 4.9rem; */
 }
+ 
+.signup__text{
+    margin-top: -5rem !important;
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid orange; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    animation: 
+      typing 3.5s steps(40, end),
+      blink-caret .75s step-end infinite;
+  }
+  
+  /* The typing effect */
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: orange; }
+  }
+/* .signup__text {
+	animation: pulse 5s;
+}
+
+@keyframes pulse {
+	0% {
+	color: #051E3E;
+	}
+	10% {
+		color: #051E3E;
+	}
+	30% {
+		color: white;
+	}
+	50% {
+		color: #051E3E;
+	}
+	60% {
+		color: #051E3E;
+	}
+	80% {
+		color: white;
+	}
+	100% {
+		color: #051E3E;
+	}
+}
+
+.signup__text:after {
+	content: "";
+	animation: spin 5s linear;
+} */
+
 @media only screen and (max-width:450px) {
     .insta__post{
         display:none;

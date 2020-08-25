@@ -42,7 +42,7 @@ export default function LoginForm() {
                                     alt='description'
                                     className='img-fluid login_formImg'
                                 />
-                                <span className="signup__btn"><a href="#" onClick={(e)=>{goToSignInWindow(e)}}className="signUp__link">Sign Up</a> using google account</span>
+                                <span className="signup__btn"><a href="#" onClick={(e)=>{goToSignInWindow(e)}}className="signUp__link">Sign Up</a></span><span className="signup__btn signup__text"> using google account</span>
                             
                         </div>
                     </div>

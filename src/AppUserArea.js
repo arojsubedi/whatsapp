@@ -13,6 +13,7 @@ import {useStateValue} from './StateProvider';
 function AppUserArea() {
 
     const [rooms,setRooms] = useState([])
+    const [searchedChat,setSearchedChat]=useState('')
     const [{user},dispatch] = useStateValue();
 
     
@@ -51,20 +52,24 @@ function AppUserArea() {
                     <input 
                         id="search__option"
                         name="search__option"
-                        placeholder="search or start new chat"
+                        placeholder="search chat"
                         className="search__input"
-                        // value={}
-                        // onchange={e}
+                        value={searchedChat}
+                        onChange={(e)=>setSearchedChat(e.target.value)}
                     />
                 </div>
                 
             </div>
             <div className="appusrarea__chats">
                     <UserChats addNewChat />
-                    {
-                        
+                    {  
                         rooms.map((room)=>{
-                            return <UserChats key={room.id} id={room.id} name={room.rooms.name}/>
+                            if(searchedChat== '')
+                                return <UserChats key={room.id} id={room.id} name={room.rooms.name}/>
+                            else{
+                                if(room.rooms.name.indexOf(searchedChat)>-1)
+                                    return <UserChats key={room.id} id={room.id} name={room.rooms.name}/>
+                            }
                         })
                     }
             </div>

@@ -36,6 +36,10 @@
     border: none;
     font-size: 14px;;
 }
+.appusrarea__chats>a{
+    text-decoration: none !important;
+    color: black;
+}
 input:focus, textarea:focus, select:focus{
     outline: none;
 }

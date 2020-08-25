@@ -7,7 +7,7 @@
 .usermsgarea__userinfo{
     display:flex;
     align-items: center;
-    padding: 15px;
+    padding: 5px;
     border-bottom: 0.1px solid lightgray;
 }
 .usermsgarea__info{
@@ -37,6 +37,8 @@
 
 .usermsgarea__msg{
     flex: 1;
+    display:flex;
+    flex-direction: column-reverse;
     background-image: url(./static/images/backgroundimage.jpg);
     background-repeat: repeat;
     padding:15px;

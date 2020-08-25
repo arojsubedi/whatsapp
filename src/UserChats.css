@@ -6,9 +6,12 @@
 
 .userChats:hover{
     background-color: #ededee;
+    text-decoration: none;
 }
 .userChats__namemsg{
     margin-left: 15px;
+    text-decoration:none;
+    color: black;
 }
 
 .userChats__namemsg > h5{
