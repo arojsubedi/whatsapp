@@ -10,7 +10,7 @@ function App() {
   const [{user},dispatch] = useStateValue();
   return (
     <div className="app">
-      {(user!==null)?
+      {(user==null)?
       <div className="app__body">
             <Router>
               <AppUserArea />

@@ -95,7 +95,7 @@ function UserMsgArea() {
                 </div>
                 <div className="usermsgarea__msg">
                     {messages.map(({id,message}) => (
-                        <p key={id} className={`usermsgarea__chatmsg ${true && "usrmsgarea__recvrchatmsg"}`}>
+                        <p key={id} className={`usermsgarea__chatmsg ${message.name==user?.displayName && "usrmsgarea__recvrchatmsg"}`}>
                             <span className="chatmsg__username">{message.name}</span>
                             {message.message}
                             <span className="chatmsg__timestamp">{setLocalDate(new Date(messages[0].message.timestamp?.toDate()).toUTCString())}</span>
